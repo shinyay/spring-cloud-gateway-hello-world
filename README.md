@@ -13,6 +13,9 @@ Overview
 
 ## Requirement
 
+- [httpbin.org](http://httpbin.org)
+  - A simple HTTP Request & Response Service.
+
 ## Usage
 
 ## Installation
