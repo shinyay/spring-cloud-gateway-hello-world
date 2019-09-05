@@ -19,10 +19,21 @@ extra["springCloudVersion"] = "Greenwich.SR2"
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
+	implementation("org.springframework:spring-context")
+	implementation("org.springframework:spring-test")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("org.springframework.cloud:spring-cloud-starter-gateway")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	implementation("org.junit.jupiter:junit-jupiter:5.4.2")
+	testImplementation("org.springframework.boot:spring-boot-starter-test") {
+		exclude("junit", "junit")
+		exclude("org.mockito", "mockito-core")
+	}
+	testImplementation("org.junit.jupiter:junit-jupiter-api:5.4.2")
+	testImplementation("org.assertj:assertj-core:3.13.2")
+	testRuntime("org.junit.jupiter:junit-jupiter-engine:5.4.2")
+	testImplementation("com.ninja-squad:springmockk:1.1.2")
+
 }
 
 dependencyManagement {
