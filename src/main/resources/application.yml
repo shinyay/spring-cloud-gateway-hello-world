@@ -10,3 +10,5 @@ spring:
           uri: http://httpbin.org
           predicates:
             - Path=/post
+          filters:
+            - AddRequestHeader=X-Request-Hello, PostWold
