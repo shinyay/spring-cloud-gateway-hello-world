@@ -12,7 +12,7 @@ class SpringCloudGatewayGsApplication {
 	fun routing(builder: RouteLocatorBuilder) : RouteLocator = builder.routes()
 			.route { p
 				-> p.path("/get")
-					.filters { f -> f.addRequestHeader("Hello", "GetWorld") }
+					.filters { f -> f.addRequestHeader("X-Request-Hello", "GetWorld") }
 					.uri("http://httpbin.org")
 			}.build()
 }
