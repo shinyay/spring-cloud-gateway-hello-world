@@ -1,14 +1,47 @@
 server:
-  port: 8080
+  port: 8762
+
 spring:
   application:
     name: gateway
   cloud:
     gateway:
       routes:
-        - id: hello
-          uri: http://httpbin.org
+        - id: service
+          uri: lb://service
           predicates:
-            - Path=/post
+            - Path=/service/**
           filters:
-            - AddRequestHeader=X-Request-Hello, PostWold
+            - StripPrefix=1
+        - id: registry
+          uri: lb://registry
+          predicates:
+            - Path=/registry/**
+          filters:
+            - StripPrefix=1
+        - id: eureka
+          uri: lb://registry
+          predicates:
+            - Path=/eureka/**
+
+info:
+  app:
+    name: ${spring.application.name}
+
+eureka:
+  client:
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka}
+    healthcheck:
+      enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - mappings
+          - env
+          - health
+          - info
