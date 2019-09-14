@@ -9,6 +9,27 @@ Spring Cloud Getting Started for Gataway
 
 ## Demo
 
+### Routing to HTTPBIN access
+
+- application.yml
+
+```yml
+server:
+  port: 8080
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      routes:
+        - id: hello
+          uri: http://httpbin.org
+          predicates:
+            - Path=/post
+          filters:
+            - AddRequestHeader=X-Request-Hello, PostWold
+```
+
 ## Features
 
 - feature:1
