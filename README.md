@@ -7,6 +7,14 @@ Spring Cloud Getting Started for Gataway
 
 ## Description
 
+### Building Block for Gateway
+
+|Name|Description|
+|----|-----------|
+|**Route**|Primary API of the Gateway<BR>Defined by followings<BR>- ID<BR>- Destination(URI)<BR>- Set of Predicates and Fileters|
+|**Predicare**||
+|**Fileter**||
+
 ## Demo
 
 ### Routing to HTTPBIN access
