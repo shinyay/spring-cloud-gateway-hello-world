@@ -13,7 +13,7 @@ Spring Cloud Getting Started for Gataway
 |----|-----------|
 |**Route**|Primary API of the Gateway<BR>Defined by followings<BR>- ID<BR>- Destination(URI)<BR>- Set of Predicates and Fileters|
 |**Predicate**|HTTP Request Matching<BR>`Java 8 Function Predicate`<BR>Used for followings<BR>- Header <BR>- Method <BR>- Parameter|
-|**Filter**|`Spring WebFilter`|
+|**Filter**|`Spring WebFilter`<BR>Modification of the incoming HTTP request or outgoing HTTP response|
 
 ### Route Predicate Factories
 - After Route Predicate Factory
@@ -87,6 +87,45 @@ routes:
   uri: https://weightlow.org
   predicates:
   - Weight=group1, 2
+```
+
+### GatewayFilter Factory
+- AddRequestHeader
+- AddRequestParameter
+- AddResponseHeader
+- DedupeResponseHeader
+- MapRequestHeade
+- PrefixPath
+- PreserveHostHeader
+- RequestRateLimiter
+- RedirectTo
+- RemoveHopByHopHeadersFilter
+- RemoveRequestHeader
+- RemoveResponseHeade
+- RemoveRequestParameter
+- RewritePath
+- RewriteLocationResponseHeader
+- RewriteResponseHeader
+- SaveSession
+- SecureHeaders
+- SetPath
+- SetRequestHeader
+- SetResponseHeader
+- SetStatus
+- StripPrefix
+- Retry
+- RequestSize
+- Modify Request Body
+- Modify Response Body
+
+#### Default Fileter
+```yaml
+spring:
+  cloud:
+    gateway:
+      default-filters:
+      - AddResponseHeader=X-Response-Default-Foo, Default-Bar
+      - PrefixPath=/httpbin
 ```
 
 ## Demo
