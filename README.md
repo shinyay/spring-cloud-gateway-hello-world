@@ -13,7 +13,7 @@ Spring Cloud Getting Started for Gataway
 |----|-----------|
 |**Route**|Primary API of the Gateway<BR>Defined by followings<BR>- ID<BR>- Destination(URI)<BR>- Set of Predicates and Fileters|
 |**Predicate**|HTTP Request Matching<BR>`Java 8 Function Predicate`<BR>Used for followings<BR>- Header <BR>- Method <BR>- Parameter|
-|**Filter**||
+|**Filter**|`Spring WebFilter`|
 
 ## Demo
 
