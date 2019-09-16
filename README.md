@@ -15,6 +15,80 @@ Spring Cloud Getting Started for Gataway
 |**Predicate**|HTTP Request Matching<BR>`Java 8 Function Predicate`<BR>Used for followings<BR>- Header <BR>- Method <BR>- Parameter|
 |**Filter**|`Spring WebFilter`|
 
+### Route Predicate Factories
+- After Route Predicate Factory
+```yaml
+predicates:
+- After=2017-01-20T17:42:47.789-07:00[America/Denver]
+```
+
+- Before Route Predicate Factory
+```yaml
+predicates:
+- Before=2017-01-20T17:42:47.789-07:00[America/Denver]
+```
+
+- Between Route Predicate Factory
+```yaml
+predicates:
+- Between=2017-01-20T17:42:47.789-07:00[America/Denver], 2017-01-21T17:42:47.789-07:00[America/Denver]
+```
+
+- Cookie Route Predicate Factory
+```yaml
+predicates:
+- Cookie=chocolate, ch.p
+```
+
+- Header Route Predicate Factory
+```yaml
+predicates:
+- Header=X-Request-Id, \d+
+```
+
+- Host Route Predicate Factory
+```yaml
+predicates:
+- Host=**.somehost.org,**.anotherhost.org
+```
+
+- Method Route Predicate Factory
+```yaml
+predicates:
+- Method=GET
+```
+
+- Path Route Predicate Factory
+```yaml
+predicates:
+- Path=/foo/{segment},/bar/{segment}
+```
+
+- Query Route Predicate Factory
+```yaml
+predicates:
+- Query=baz
+```
+
+- RemoteAddr Route Predicate Factory
+```yaml
+predicates:
+- RemoteAddr=192.168.1.1/24
+```
+
+- Weight Route Predicate Factory
+```yaml
+routes:
+- id: weight_high
+  uri: https://weighthigh.org
+  predicates:
+  - Weight=group1, 8
+- id: weight_low
+  uri: https://weightlow.org
+  predicates:
+  - Weight=group1, 2
+```
+
 ## Demo
 
 ### Routing to HTTPBIN access
